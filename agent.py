@@ -35,7 +35,7 @@ def generate_code(state: AgentState, config: RunnableConfig):
     if error is not None:
         retry_count += 1
         
-    llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.0)
+    llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0.0)
     
     if retry_count > 0:
         system_message = (
@@ -173,7 +173,7 @@ def explain_result(state: AgentState, config: RunnableConfig):
     result = state["result"]
     df_info = state["df_info"]
     
-    llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.3)
+    llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0.3)
     
     system_message = (
         "You are a helpful and polite data analyst assistant.\n"
@@ -203,7 +203,7 @@ def explain_failure(state: AgentState, config: RunnableConfig):
     error = state["error"]
     code = state["code"]
     
-    llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.3)
+    llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0.3)
     
     system_message = (
         "You are a helpful and polite data analyst assistant.\n"
